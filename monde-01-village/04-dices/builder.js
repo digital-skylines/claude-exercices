@@ -15,6 +15,23 @@ export function buildDiceOption () {
     input.setAttribute("type", "number")
     input.setAttribute("min", 2);
     input.setAttribute("max", 99);
+    input.setAttribute("step", 1);
+    input.addEventListener("change", () => {
+        const valueString = input.value;
+        let valueNumber = Number(valueString);
+
+
+
+        if(isNaN(valueNumber) || !isFinite(valueNumber) || valueString.length === 0) {
+            input.value = 6;
+        }
+
+        valueNumber = Math.round(Math.min(valueNumber, 99))
+        valueNumber = Math.round(Math.max(valueNumber, 2))
+
+        input.value = valueNumber;
+
+    })
     
     const button = buildElement("button", "");
     button.textContent = "X"

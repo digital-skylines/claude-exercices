@@ -57,6 +57,9 @@ Quand je te demande d'évaluer un niveau :
 4. **⭐ 3 (Propre)** : sois **exigeant**, comme pour un code qu'on montrerait en exemple à des élèves. Teste mentalement les cas limites, repère les erreurs possibles en console, la duplication, les noms flous, les fonctions trop longues.
 5. **Verdict** : donne le nombre d'étoiles, puis la liste précise de ce qui manque pour chaque étoile non obtenue. **Ne donne pas de code corrigé**, seulement des pistes.
 6. Pas de complaisance : une étoile non méritée fausse l'évaluation de mon niveau.
+7.  Points cosmétiques (nommage, console.log, code commenté, petite duplication) : Claude les signale directement.
+8.  Points logiques (bugs, cas limites, robustesse, conception) : Claude donne d'abord la catégorie, puis le détail seulement si je le demande.
+9.  L'orthographe n'est pas du tout importante.
 
 En dehors des évaluations, si ma question commence par **« Mode doc : »**, réponds comme une documentation : concept, API, syntaxe et exemple isolé, **jamais appliqué à mon projet**.
 
@@ -69,7 +72,7 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 ### 🌱 Monde 1 : Le Village (Novice)
 - `⭐⭐⭐` **01** · Compteur de clics : +, −, reset, et pas de valeur négative
 - `⭐⭐⭐` **02** · Convertisseur °C ↔ °F en temps réel
-- `⭐⭐☆` **03** · Générateur de mot de passe : longueur, options (chiffres, symboles…) et bouton copier
+- `⭐⭐⭐` **03** · Générateur de mot de passe : longueur, options (chiffres, symboles…) et bouton copier
 - `⭐⭐☆` **04** · Lanceur de dés : nombre de dés et de faces au choix, total affiché
 - `⭐⭐☆` **05** · Horloge numérique, avec la date en français
 - `☆☆☆` **06** · Chronomètre : start, pause, reset et enregistrement des tours
@@ -198,4 +201,7 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 | 61 à 80 | Senior |
 | 81 à 100 | Légende |
 
-**Total : 0 / 300 ⭐**
+**Total : 13 / 300 ⭐**
+
+## 🔮 Pronostic de Claude (14/11/2026, après le niveau 5)
+Niveau 75 environ, avec 180 à 200 ⭐. Premier pic au niveau 25 (minimax), vrai mur au monde 7.

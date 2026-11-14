@@ -12,7 +12,7 @@ document.querySelector("#add-dice").addEventListener("click", () => options.appe
 
 document.querySelector("#start-dices").addEventListener("click", () => {
 
-    const totalInput = document.querySelector("#total");
+    const totalSpan = document.querySelector("#total");
 
     const dicesInput = document.querySelectorAll('.dice-input');
     const dices = document.querySelector("#dices")
@@ -25,21 +25,16 @@ document.querySelector("#start-dices").addEventListener("click", () => {
 
     let total = 0;
     dicesInput.forEach(dice => {
-        let value = 6;
         
         // Créer un dé avec la bonne valeur du dé
         dice.value = Number(dice.value);
-        if(!isNaN(dice.value) && isFinite(dice.value) ) {
-            dice.value = Math.min(dice.value, 99)
-            dice.value = Math.max(dice.value, 1)
-            value = Math.floor(Math.random() * dice.value) +1;
-        } 
+        let value = Math.floor(Math.random() * dice.value) +1;
         
         const newDice = buildDice(value);
         dices.appendChild(newDice)
         total += value;
     })
 
-    totalInput.textContent = total;
+    totalSpan.textContent = total;
 })
 
