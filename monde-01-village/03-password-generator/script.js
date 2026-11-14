@@ -6,7 +6,7 @@ const specials = "()!~+-*/".split("")
 let password = "";
 
 // EventListeners
-document.querySelector("#longueur").addEventListener("input", () => generatePassword())
+document.querySelector("#longueur").addEventListener("change", () => generatePassword())
 document.querySelector("#chiffres").addEventListener("change", () => generatePassword())
 document.querySelector("#symboles").addEventListener("change", () => generatePassword())
 document.querySelector("#uppercases").addEventListener("change", () => generatePassword())
@@ -33,7 +33,7 @@ function generatePassword() {
     const inputSpecialsValue = document.querySelector("#symboles").checked
     const inputUppercaseValue = document.querySelector("#uppercases").checked
     const inputLowercaseValue = document.querySelector("#lowercases").checked
-    let howMany = Number(document.querySelector("#longueur").value);
+    let howManyChars = Number(document.querySelector("#longueur").value);
 
     // Tout doit être coché
     if(!inputNumbersValue && !inputSpecialsValue && !inputUppercaseValue && !inputLowercaseValue) {
@@ -43,28 +43,28 @@ function generatePassword() {
         return;
     }
 
-    if(isNaN(howMany) || !isFinite(howMany)) {
+    if(isNaN(howManyChars) || !isFinite(howManyChars)) {
         createDialog("Longueur incorrect");
         return;
     }
 
-    if (howMany > 50) { 
-        howMany = 50;
+    if (howManyChars > 50) { 
+        howManyChars = 50;
     }
    
-    if(howMany < 4) { 
-        howMany = 4;
+    if(howManyChars < 4) { 
+        howManyChars = 4;
     }
 
-    document.querySelector("#longueur").value = howMany;
+    document.querySelector("#longueur").value = howManyChars;
 
     // Création du tableau
-    const a = inputNumbersValue ? numbers : [];
-    const b = inputSpecialsValue ? specials : [];
-    const c = inputUppercaseValue ? uppercases : [];
-    const d = inputLowercaseValue ? lowercases : [];
+    const numberArray = inputNumbersValue ? numbers : [];
+    const specialArray = inputSpecialsValue ? specials : [];
+    const uppercaseArray = inputUppercaseValue ? uppercases : [];
+    const lowercaseArray = inputLowercaseValue ? lowercases : [];
 
-    const allCharTable = [...a, ...b, ...c, ...d];
+    const allCharTable = [...numberArray, ...specialArray, ...uppercaseArray, ...lowercaseArray];
 
     let checkNumber = inputNumbersValue ? 0 : 1;
     let checkSpecial = inputSpecialsValue ? 0 : 1;
@@ -78,6 +78,9 @@ function generatePassword() {
         checkLowercase  === 0
     ) {
 
+        const octets = new Uint8Array(howManyChars);
+        crypto.getRandomValues(octets);
+
         checkNumber = inputNumbersValue ? 0 : 1;
         checkSpecial = inputSpecialsValue ? 0 : 1;
         checkUppercase = inputUppercaseValue ? 0 : 1;
@@ -85,9 +88,11 @@ function generatePassword() {
         
         password = "";
         
-        for(let i = 0; i < howMany; i++) {
-            const index = Math.floor(Math.random() * allCharTable.length);
+        octets.forEach(octet => {
+            // const index = Math.floor(Math.random() * allCharTable.length);
+            const index = Math.floor((octet * allCharTable.length) / 256)
             password += allCharTable[index];
+            console.log(index)
 
             if(inputNumbersValue && numbers.includes(allCharTable[index])) {
                 checkNumber++;
@@ -104,9 +109,7 @@ function generatePassword() {
             if(inputLowercaseValue && lowercases.includes(allCharTable[index])) {
                 checkLowercase++
             }
-            
-        }
-
+        })
     } 
 
     screen.textContent = password;
