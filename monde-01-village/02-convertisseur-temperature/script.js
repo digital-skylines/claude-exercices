@@ -2,7 +2,8 @@ const el = {
     value: document.querySelector("#value"),
     input: document.querySelector("#input"),
     C2F: document.querySelector("#C2F"),
-    F2C: document.querySelector("#F2C")
+    F2C: document.querySelector("#F2C"),
+    mode: "C2F"
 }
 
 function convertC2F(celsius) {
@@ -24,7 +25,7 @@ function convert() {
     }
 
     // Conversion de la valeur
-    const result = el.C2F.getAttribute("disabled") ? convertC2F(temperature) + "°F" : convertF2C(temperature) + "°C" ;
+    const result = el.mode === "C2F" ? convertC2F(temperature) + "°F" : convertF2C(temperature) + "°C" ;
     el.value.textContent = result;
 }
 
@@ -33,11 +34,13 @@ el.input.addEventListener("input", () => convert())
 el.F2C.addEventListener("click", () => { 
     el.C2F.removeAttribute("disabled")
     el.F2C.setAttribute("disabled", "disabled")
+    el.mode = "F2C"
     convert()
 })
 
 el.C2F.addEventListener("click", () => { 
     el.C2F.setAttribute("disabled", "disabled")
     el.F2C.removeAttribute("disabled")
+    el.mode = "C2F"
     convert()
 })
