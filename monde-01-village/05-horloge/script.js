@@ -23,9 +23,14 @@ displayClock()
 const ms = (new Date()).getMilliseconds()
 
 setTimeout(() => {
+    displayClock()
     setInterval(() => {
         const ms = (new Date()).getMilliseconds()
         displayClock()
+        setTimeout(() => {
+            console.log(ms)
+            displayClock()
+        }, 1000 - ms)
     }, 1000)
 }, 1000 - ms)
 
