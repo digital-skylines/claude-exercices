@@ -73,7 +73,7 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 - `⭐⭐⭐` **01** · Compteur de clics : +, −, reset, et pas de valeur négative
 - `⭐⭐⭐` **02** · Convertisseur °C ↔ °F en temps réel
 - `⭐⭐⭐` **03** · Générateur de mot de passe : longueur, options (chiffres, symboles…) et bouton copier
-- `⭐⭐☆` **04** · Lanceur de dés : nombre de dés et de faces au choix, total affiché
+- `⭐⭐⭐` **04** · Lanceur de dés : nombre de dés et de faces au choix, total affiché
 - `⭐⭐☆` **05** · Horloge numérique, avec la date en français
 - `☆☆☆` **06** · Chronomètre : start, pause, reset et enregistrement des tours
 - `☆☆☆` **07** · Pierre-feuille-ciseaux contre l'ordi, avec score
