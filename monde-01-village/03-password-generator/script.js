@@ -66,14 +66,24 @@ function generatePassword() {
 
     const allCharTable = [...a, ...b, ...c, ...d];
 
-    password = "";
-
     let checkNumber = inputNumbersValue ? 0 : 1;
     let checkSpecial = inputSpecialsValue ? 0 : 1;
     let checkUppercase = inputUppercaseValue ? 0 : 1;
     let checkLowercase = inputLowercaseValue ? 0 : 1;
     
-    do {
+    while( 
+        checkNumber === 0 ||
+        checkSpecial  === 0 ||
+        checkUppercase  === 0 ||
+        checkLowercase  === 0
+    ) {
+
+        checkNumber = inputNumbersValue ? 0 : 1;
+        checkSpecial = inputSpecialsValue ? 0 : 1;
+        checkUppercase = inputUppercaseValue ? 0 : 1;
+        checkLowercase = inputLowercaseValue ? 0 : 1;
+        
+        password = "";
         
         for(let i = 0; i < length; i++) {
             const index = Math.floor(Math.random() * allCharTable.length);
@@ -97,12 +107,7 @@ function generatePassword() {
             
         }
 
-    } while( 
-        checkNumber === 0 ||
-        checkSpecial  === 0 ||
-        checkUppercase  === 0 ||
-        checkLowercase  === 0
-    )
+    } 
 
     screen.textContent = password;
 
