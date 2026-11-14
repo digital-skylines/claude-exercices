@@ -33,7 +33,7 @@ function generatePassword() {
     const inputSpecialsValue = document.querySelector("#symboles").checked
     const inputUppercaseValue = document.querySelector("#uppercases").checked
     const inputLowercaseValue = document.querySelector("#lowercases").checked
-    let length = Number(document.querySelector("#longueur").value);
+    let howMany = Number(document.querySelector("#longueur").value);
 
     // Tout doit être coché
     if(!inputNumbersValue && !inputSpecialsValue && !inputUppercaseValue && !inputLowercaseValue) {
@@ -43,20 +43,20 @@ function generatePassword() {
         return;
     }
 
-    if(isNaN(length) || !isFinite(length)) {
+    if(isNaN(howMany) || !isFinite(howMany)) {
         createDialog("Longueur incorrect");
         return;
     }
 
-    if (length > 50) { 
-        length = 50;
+    if (howMany > 50) { 
+        howMany = 50;
     }
    
-    if(length < 4) { 
-        length = 4;
+    if(howMany < 4) { 
+        howMany = 4;
     }
 
-    document.querySelector("#longueur").value = length;
+    document.querySelector("#longueur").value = howMany;
 
     // Création du tableau
     const a = inputNumbersValue ? numbers : [];
@@ -85,7 +85,7 @@ function generatePassword() {
         
         password = "";
         
-        for(let i = 0; i < length; i++) {
+        for(let i = 0; i < howMany; i++) {
             const index = Math.floor(Math.random() * allCharTable.length);
             password += allCharTable[index];
 
