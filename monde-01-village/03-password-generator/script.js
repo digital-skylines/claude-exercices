@@ -66,10 +66,10 @@ function generatePassword() {
 
     const allCharTable = [...numberArray, ...specialArray, ...uppercaseArray, ...lowercaseArray];
 
-    let checkNumber = inputNumbersValue ? 0 : 1;
-    let checkSpecial = inputSpecialsValue ? 0 : 1;
-    let checkUppercase = inputUppercaseValue ? 0 : 1;
-    let checkLowercase = inputLowercaseValue ? 0 : 1;
+    let checkNumber = 0;
+    let checkSpecial = 0;
+    let checkUppercase = 0;
+    let checkLowercase = 0;
     
     while( 
         checkNumber === 0 ||
@@ -89,10 +89,8 @@ function generatePassword() {
         password = "";
         
         octets.forEach(octet => {
-            // const index = Math.floor(Math.random() * allCharTable.length);
             const index = Math.floor((octet * allCharTable.length) / 256)
             password += allCharTable[index];
-            console.log(index)
 
             if(inputNumbersValue && numbers.includes(allCharTable[index])) {
                 checkNumber++;
