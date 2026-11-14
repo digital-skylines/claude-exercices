@@ -27,8 +27,7 @@ document.querySelector("#start-dices").addEventListener("click", () => {
     dicesInput.forEach(dice => {
         
         // Créer un dé avec la bonne valeur du dé
-        dice.value = Number(dice.value);
-        let value = Math.floor(Math.random() * dice.value) +1;
+        let value = Math.floor(Math.random() * Number(dice.value)) +1;
         
         const newDice = buildDice(value);
         dices.appendChild(newDice)
