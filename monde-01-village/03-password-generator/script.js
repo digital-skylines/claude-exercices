@@ -33,7 +33,7 @@ function generatePassword() {
     const inputSpecialsValue = document.querySelector("#symboles").checked
     const inputUppercaseValue = document.querySelector("#uppercases").checked
     const inputLowercaseValue = document.querySelector("#lowercases").checked
-    const length = Number(document.querySelector("#longueur").value);
+    let length = Number(document.querySelector("#longueur").value);
 
     // Tout doit être coché
     if(!inputNumbersValue && !inputSpecialsValue && !inputUppercaseValue && !inputLowercaseValue) {
@@ -55,6 +55,8 @@ function generatePassword() {
     if(length < 1) { 
         length = 0;
     }
+
+    document.querySelector("#longueur").value = length;
 
     // Création du tableau
     const a = inputNumbersValue ? numbers : [];
