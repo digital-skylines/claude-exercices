@@ -1,0 +1,23 @@
+body {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 8px;
+}
+
+#counter {
+    grid-column: span 3;
+    min-height: 50px;
+    align-content: center;
+    justify-self: center;
+}
+
+button {
+    min-height: 32px;
+}
