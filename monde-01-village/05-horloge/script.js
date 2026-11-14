@@ -14,8 +14,8 @@ function displayClock() {
         second: date.getSeconds().toString().padStart(2, "0")
     }
     
-        horlogeItem.textContent = `${d.hour}:${d.minute}:${d.second}`;
-        dateItem.textContent = `${d.weekDay} ${d.day} ${d.month} ${d.year}`
+    horlogeItem.textContent = `${d.hour}:${d.minute}:${d.second}`;
+    dateItem.textContent = `${d.weekDay} ${d.day} ${d.month} ${d.year}`
 }
 
 function startClock() {
