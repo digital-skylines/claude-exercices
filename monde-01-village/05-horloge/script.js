@@ -18,23 +18,13 @@ function displayClock() {
         dateItem.textContent = `${d.weekDay} ${d.day} ${d.month} ${d.year}`
 }
 
-displayClock()
+function startClock() {
+    displayClock();
+    const ms = (new Date()).getUTCMilliseconds();
+    setTimeout(startClock, 1000 - ms)
+}
 
-const ms = (new Date()).getMilliseconds()
-
-setTimeout(() => {
-    displayClock()
-    setInterval(() => {
-        const ms = (new Date()).getMilliseconds()
-        displayClock()
-        setTimeout(() => {
-            console.log(ms)
-            displayClock()
-        }, 1000 - ms)
-    }, 1000)
-}, 1000 - ms)
-
-
+startClock()
 
 function getWeekDay(value) {
     return ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"][value];
