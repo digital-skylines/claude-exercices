@@ -11,18 +11,22 @@ function displayClock() {
         day: date.getDate().toString().padStart(2, "0"),
         hour: date.getHours().toString().padStart(2, "0"),
         minute: date.getMinutes().toString().padStart(2, "0"),
-        second: date.getSeconds().toString().padStart(2, "0")
+        second: date.getSeconds().toString().padStart(2, "0"),
+        millisecond : date.getMilliseconds()
     }
-
-    horlogeItem.textContent = `${d.hour}:${d.minute}:${d.second}`;
-    dateItem.textContent = `${d.weekDay} ${d.day} ${d.month} ${d.year}`
+    
+        horlogeItem.textContent = `${d.hour}:${d.minute}:${d.second}`;
+        dateItem.textContent = `${d.weekDay} ${d.day} ${d.month} ${d.year}`
 }
 
+displayClock()
+
 setInterval(() => {
-    setTimeout(() => {
+    const ms = (new Date()).getMilliseconds()
+    if(ms < 10) {
         displayClock()
-    }, 0);
-}, 1000)
+    }
+}, 1)
 
 function getWeekDay(value) {
     return ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"][value];
