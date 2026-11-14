@@ -13,9 +13,9 @@ function convertF2C(fahrenheit) {
     return ((fahrenheit - 32) * 5/9).toFixed(1)
 }
 
-function convert(event) {
+function convert() {
     // Récupération de la valeur
-    const temperature = Number(el.input.value);
+    const temperature = el.input.value === "" ? NaN : Number(el.input.value);
 
     // Vérification de la valeur
     if(isNaN(temperature) || !isFinite(temperature)) {
@@ -24,10 +24,20 @@ function convert(event) {
     }
 
     // Conversion de la valeur
-    const result = event.target.dataset.mode === "c2f" ? convertC2F(temperature) + "°F" : convertF2C(temperature) + "°C" ;
+    const result = el.C2F.getAttribute("disabled") ? convertC2F(temperature) + "°F" : convertF2C(temperature) + "°C" ;
     el.value.textContent = result;
 }
 
-el.C2F.addEventListener("click", (event) => convert(event))
+el.input.addEventListener("input", () => convert())
 
-el.F2C.addEventListener("click", (event) => convert(event))
+el.F2C.addEventListener("click", () => { 
+    el.C2F.removeAttribute("disabled")
+    el.F2C.setAttribute("disabled", "disabled")
+    convert()
+})
+
+el.C2F.addEventListener("click", () => { 
+    el.C2F.setAttribute("disabled", "disabled")
+    el.F2C.removeAttribute("disabled")
+    convert()
+})

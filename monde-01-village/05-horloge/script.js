@@ -23,76 +23,11 @@ function displayClock() {
 displayClock()
 
 function getWeekDay(value) {
-    switch(value) {
-        case 0: 
-            return "lundi";
-        break;
-        case 1: 
-            return "mardi";
-        break;
-        case 2: 
-            return "mercredi";
-        break;
-        case 3: 
-            return "jeudi";
-        break;
-        case 4: 
-            return "vendredi";
-        break;
-        case 5: 
-            return "samedi";
-        break;
-        case 6: 
-            return "dimanche";
-        break;
-        default:
-            return "lundi";
-        break;
-    }
+    return ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"][value];
 }
 
 function getMonth(value) {
-    switch(value) {
-        case 0:
-            return "janvier"
-        break;
-        case 1:
-            return "février"
-        break;
-        case 2:
-            return "mars"
-        break;
-        case 3:
-            return "avril"
-        break;
-        case 4:
-            return "mai"
-        break;
-        case 5:
-            return "juin"
-        break;
-        case 6:
-            return "juillet"
-        break;
-        case 7:
-            return "aout"
-        break;
-        case 8:
-            return "septembre"
-        break;
-        case 9:
-            return "octobre"
-        break;
-        case 10:
-            return "novembre"
-        break;
-        case 11:
-            return "décembre"
-        break;
-        default:
-            return "janvier"
-        break;
-    }
+    return [ "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"][value];
 }
 
 function dualDigits(value) {
