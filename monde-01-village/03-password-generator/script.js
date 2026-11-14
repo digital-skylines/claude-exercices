@@ -52,8 +52,8 @@ function generatePassword() {
         length = 50;
     }
    
-    if(length < 1) { 
-        length = 0;
+    if(length < 4) { 
+        length = 4;
     }
 
     document.querySelector("#longueur").value = length;
@@ -68,10 +68,41 @@ function generatePassword() {
 
     password = "";
 
-    for(let i = 0; i < length; i++) {
-        const index = Math.floor(Math.random() * allCharTable.length);
-        password += allCharTable[index];
-    }
+    let checkNumber = inputNumbersValue ? 0 : 1;
+    let checkSpecial = inputSpecialsValue ? 0 : 1;
+    let checkUppercase = inputUppercaseValue ? 0 : 1;
+    let checkLowercase = inputLowercaseValue ? 0 : 1;
+    
+    do {
+        
+        for(let i = 0; i < length; i++) {
+            const index = Math.floor(Math.random() * allCharTable.length);
+            password += allCharTable[index];
+
+            if(inputNumbersValue && numbers.includes(allCharTable[index])) {
+                checkNumber++;
+            }
+
+            if(inputSpecialsValue && specials.includes(allCharTable[index])) {
+                checkSpecial++
+            } 
+
+            if(inputUppercaseValue && uppercases.includes(allCharTable[index])) {
+                checkUppercase++
+            }
+
+            if(inputLowercaseValue && lowercases.includes(allCharTable[index])) {
+                checkLowercase++
+            }
+            
+        }
+
+    } while( 
+        checkNumber === 0 ||
+        checkSpecial  === 0 ||
+        checkUppercase  === 0 ||
+        checkLowercase  === 0
+    )
 
     screen.textContent = password;
 
