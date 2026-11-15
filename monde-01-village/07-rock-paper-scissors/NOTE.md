@@ -1,1 +1,2 @@
 - J'ai utilisé que mes connaissances.
+- J'ai rien appris pour l'instant

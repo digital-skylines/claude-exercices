@@ -85,7 +85,7 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 - `⭐⭐⭐` **04** · Lanceur de dés : nombre de dés et de faces au choix, total affiché
 - `⭐⭐⭐` **05** · Horloge numérique, avec la date en français
 - `⭐⭐⭐` **06** · Chronomètre : start, pause, reset et enregistrement des tours
-- `☆☆☆` **07** · Pierre-feuille-ciseaux contre l'ordi, avec score
+- `⭐⭐☆` **07** · Pierre-feuille-ciseaux contre l'ordi, avec score
 - `☆☆☆` **08** · Devine le nombre : indices plus/moins, compteur d'essais, 3 difficultés
 - `☆☆☆` **09** · Calculatrice simple : 4 opérations, décimales, utilisable au clavier
 - `☆☆☆` **10** · 👹 **BOSS : Todo-list** (ajout, édition, suppression, filtres, sauvegarde en localStorage)
@@ -210,7 +210,7 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 | 61 à 80 | Senior |
 | 81 à 100 | Légende |
 
-**Total : 15 / 300 ⭐**
+**Total : 20 / 300 ⭐**
 
 ---
 
