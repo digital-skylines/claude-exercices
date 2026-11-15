@@ -22,27 +22,30 @@ const score = {
 const choices = [
     {
         key: "rock",
+        winAgainst: "scissors",
         fr: "pierre"
     },
     {
         key: "paper",
+        winAgainst: "rock",
         fr: "papier"
     },
     {
         key: "scissors",
+        winAgainst: "paper",
         fr: "ciseaux"
     }
 ];
 
 // Ecoute d'événement
-btns.forEach(btn => { btn.addEventListener("click", event => playGame(event.target.dataset.action)); });
+btns.forEach(btn => { btn.addEventListener("click", event => playGame(event.currentTarget.dataset.action)); });
 
 function playGame(humanAction) {
     
     const humanChoice = getHumanChoice(humanAction);
     const botChoice = getBotChoice();
 
-    const arbitration = judge(humanChoice, botChoice);
+    const arbitration = judge(humanChoice, botChoice, score);
 
     displayArbitration(arbitration);
 
@@ -57,7 +60,7 @@ function getBotChoice() {
     return choices[index];
 }
 
-function judge(humanChoice, botChoice) {
+function judge(humanChoice, botChoice, score) {
 
     const arbitration = {
         message: "",
@@ -66,21 +69,13 @@ function judge(humanChoice, botChoice) {
     };
 
     // Case human win
-    if(
-        (humanChoice.key === "rock" && botChoice.key === "scissors") ||
-        (humanChoice.key === "paper" && botChoice.key === "rock") ||
-        (humanChoice.key === "scissors" && botChoice.key === "paper")
-    ) {
+    if( humanChoice.winAgainst === botChoice.key ) {
         score.human++;
         arbitration.message = "VOUS AVEZ GAGNÉ";
     }
 
     // Case bot win
-    else if(
-        (botChoice.key === "rock" && humanChoice.key === "scissors") ||
-        (botChoice.key === "paper" && humanChoice.key === "rock") ||
-        (botChoice.key === "scissors" && humanChoice.key === "paper")
-    ) {
+    else if( botChoice.winAgainst === humanChoice.key ) {
         score.bot++;
         arbitration.message = "VOUS AVEZ PERDU";
     }
