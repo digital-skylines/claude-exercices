@@ -27,9 +27,9 @@ function getChrono(ms) {
 
 function playChrono() {
     if(pause) { return; }
-    ms++;
+    ms += 5;
     displayChrono();
-    setTimeout(playChrono, 1);
+    setTimeout(playChrono, 5);
 }
 
 displayChrono()
