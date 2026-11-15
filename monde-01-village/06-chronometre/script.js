@@ -9,6 +9,7 @@ const screen = document.querySelector("#screen");
 let pause = false;
 let ms = 0;
 let lastTime = 0;
+let time = 0;
 
 function displayChrono() {
     
@@ -26,8 +27,9 @@ function getChrono(ms) {
 }
 
 function playChrono() {
+    if(time === 0) { time = performance.now() - ms}
     if(pause) { return; }
-    ms += 5;
+    ms = performance.now() - time;
     displayChrono();
     setTimeout(playChrono, 5);
 }
@@ -35,6 +37,7 @@ function playChrono() {
 displayChrono()
 
 startButton.addEventListener("click", () => {
+    time = 0;
     pause = false;
     playChrono();
 })
@@ -45,6 +48,7 @@ pauseButton.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
     pause = true;
+    time = 0;
     ms = 0;
     lastTime = 0;
     displayChrono();
