@@ -60,7 +60,7 @@ function getBotChoice() {
     return choices[index];
 }
 
-function judge(humanChoice, botChoice, score) {
+function judge(humanChoice, botChoice, scoring) {
 
     const arbitration = {
         message: "",
@@ -69,14 +69,14 @@ function judge(humanChoice, botChoice, score) {
     };
 
     // Case human win
-    if( humanChoice.winAgainst === botChoice.key ) {
-        score.human++;
+    if(humanChoice.winAgainst === botChoice.key) {
+        scoring.human++;
         arbitration.message = "VOUS AVEZ GAGNÉ";
     }
 
     // Case bot win
-    else if( botChoice.winAgainst === humanChoice.key ) {
-        score.bot++;
+    else if(botChoice.winAgainst === humanChoice.key) {
+        scoring.bot++;
         arbitration.message = "VOUS AVEZ PERDU";
     }
 
@@ -88,10 +88,10 @@ function judge(humanChoice, botChoice, score) {
     return arbitration;
 }
 
-function displayArbitration(arbitration, score) {
+function displayArbitration(arbitration, scoring) {
     // Changement du score
-    el.humanScore.textContent = score.human;
-    el.botScore.textContent = score.bot;
+    el.humanScore.textContent = scoring.human;
+    el.botScore.textContent = scoring.bot;
 
     // Affichage du duel
     el.duel.textContent = `[VOUS] ${arbitration.humanChoice} <VS> [BOT] ${arbitration.botChoice}`;
