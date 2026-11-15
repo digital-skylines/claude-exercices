@@ -7,9 +7,10 @@ const toursList = document.querySelector("#tours-list")
 const screen = document.querySelector("#screen");
 
 let pause = true;
+let isPlaying = false;
 let ms = 0;
 let lastTime = 0;
-let time = 0;
+let startTime = 0;
 
 function displayChrono() {
     
@@ -27,9 +28,9 @@ function getChrono(ms) {
 }
 
 function playChrono() {
-    if(time === 0) { time = performance.now() - ms}
+    if(startTime === 0) { startTime = performance.now() - ms}
     if(pause) { return; }
-    ms = performance.now() - time;
+    ms = performance.now() - startTime;
     displayChrono();
     setTimeout(playChrono, 5);
 }
@@ -37,20 +38,23 @@ function playChrono() {
 displayChrono()
 
 startButton.addEventListener("click", () => {
-    time = 0;
-    if(pause) {
+    if(!isPlaying) {
+        startTime = 0;
         pause = false;
+        isPlaying = true;
         playChrono();
     }
 })
 
 pauseButton.addEventListener("click", () => {
     pause = true;
+    isPlaying = false;
 })
 
 resetButton.addEventListener("click", () => {
     pause = true;
-    time = 0;
+    isPlaying = false;
+    startTime = 0;
     ms = 0;
     lastTime = 0;
     displayChrono();
