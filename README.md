@@ -39,7 +39,7 @@ Objectif : progresser et évaluer mon niveau réel, projet après projet.
 
 📐 **Maths** : chercher une formule mathématique générique (aléatoire, distance, trigo, collisions…) est autorisé, la ⭐ 2 est conservée. Son intégration dans le projet reste mon travail.
 
-🆘 **Joker indice** : si je bloque plus d'une heure pendant la construction, je peux demander un **indice sans code** à Claude. Le niveau peut être validé, mais la ⭐ 2 est perdue.
+🆘 **Joker indice** : si je bloque plus d'une heure pendant la construction, je peux demander un **indice sans code** à Claude. Le niveau peut être validé, mais la ⭐ 2 est perdue. Un indice demandé **pendant la phase de correction** (après la première évaluation) ne la retire pas.
 
 ### Workflow
 1. Un dossier par niveau : `monde-XX-nom/NN-projet/`
@@ -49,7 +49,14 @@ Objectif : progresser et évaluer mon niveau réel, projet après projet.
 
 ### Rythme des évaluations
 - Les niveaux sont évalués **par lots** (par exemple les niveaux 1 à 4, puis 5 à 9), et **le boss à part**.
-- Je **joue l'utilisateur pénible** avant chaque envoi (voir la checklist dans `MEMENTO.md`).
+- Je **joue l'utilisateur pénible** avant chaque envoi :
+  - champ vide
+  - valeur décimale (6,5)
+  - valeurs hors limites (négatif, énorme)
+  - double clic, clics rapides
+  - console ouverte, pour ne laisser aucune erreur
+  - tout retester après chaque correction
+- Je peux **contester une remarque** de Claude en argumentant.
 
 ---
 
@@ -57,18 +64,19 @@ Objectif : progresser et évaluer mon niveau réel, projet après projet.
 
 Quand je te demande d'évaluer un ou plusieurs niveaux :
 
-1. **Lis** ce README, le `MEMENTO.md` (ce que j'ai déjà appris), l'énoncé de chaque niveau (dans la liste ci-dessous), le code du dossier et son `NOTE.md`.
+1. **Lis** ce README, l'énoncé de chaque niveau (dans la liste ci-dessous), le code du dossier et son `NOTE.md`.
 2. **⭐ 1 (Ça marche)** : vérifie que **toutes** les fonctionnalités de l'énoncé sont présentes et fonctionnent. S'il en manque une, le niveau n'est pas validé : dis précisément laquelle.
-3. **⭐ 2 (Fait seul)** : base-toi sur le `NOTE.md`, qui est rédigé avant toute correction. Si une aide interdite ou un indice y apparaît, l'étoile n'est pas accordée. En cas de doute (code qui ressemble fortement à un tuto connu), signale-le. Les échanges de correction avec toi ne retirent pas cette étoile.
+3. **⭐ 2 (Fait seul)** : base-toi sur le `NOTE.md`, qui est rédigé avant toute correction. Si une aide interdite ou un indice y apparaît, l'étoile n'est pas accordée. En cas de doute (code qui ressemble fortement à un tuto connu), signale-le. Les échanges de correction avec toi ne retirent pas cette étoile. S'il n'y a **pas de `NOTE.md`**, l'étoile reste **en attente** (ni accordée ni refusée) jusqu'à ce que je l'ajoute.
 4. **⭐ 3 (Propre)** : sois **exigeant**, comme pour un code qu'on montrerait en exemple à des élèves. Teste mentalement les cas limites, repère les erreurs possibles en console, la duplication, les noms flous, les fonctions trop longues et les mécanismes empilés là où une solution simple existe.
 5. **Deux catégories de remarques** :
-   - **Points cosmétiques** (nommage, `console.log`, code commenté, variable inutilisée, petite duplication, indentation) : signale-les **directement**.
-   - **Points logiques** (bugs, cas limites, robustesse, conception) : donne d'abord **la catégorie et le nombre de points**, puis le détail **seulement si je le demande**.
-6. **Régressions** : à chaque nouvelle vérification, contrôle aussi que mes corrections n'ont rien cassé, et signale toute régression en priorité.
+   - **Points cosmétiques** (nommage, `console.log`, code commenté, variable inutilisée, petite duplication, indentation) : signale-les **directement**, avec leur emplacement, **à chaque vérification** (pas seulement leur nombre lors des vérifications suivantes).
+   - **Points logiques** (bugs, cas limites, robustesse, conception) : donne d'abord **la catégorie et le nombre de points**, puis le détail **seulement si je le demande**. Un point déjà détaillé peut ensuite être discuté librement.
+6. **Régressions** : à chaque nouvelle vérification, contrôle aussi que mes corrections n'ont rien cassé, **y compris dans les autres niveaux modifiés par le commit**, et signale toute régression en priorité.
 7. **Ne donne jamais de code corrigé**, seulement des pistes.
 8. **L'orthographe** des textes affichés n'est pas évaluée.
 9. **Pas de complaisance** : une étoile non méritée fausse l'évaluation de mon niveau. Les micro-détails facultatifs peuvent être signalés sans bloquer l'étoile.
-10. **Récapitulatif** : termine par le score (niveau validé, total d'étoiles) et la ligne à mettre à jour dans ce README.
+10. **Contestation** : si je conteste une remarque, examine mon argument honnêtement. S'il tient, reformule ou retire le point. Plusieurs solutions peuvent être acceptées pour un même point : décris l'exigence, pas une solution unique.
+11. **Récapitulatif** : termine par le score (niveau validé, total d'étoiles) et la ligne à mettre à jour dans ce README.
 
 En dehors des évaluations, si ma question commence par **« Mode doc : »**, réponds comme une documentation : concept, API, syntaxe et exemple isolé, **jamais appliqué à mon projet**.
 
@@ -85,7 +93,7 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 - `⭐⭐⭐` **04** · Lanceur de dés : nombre de dés et de faces au choix, total affiché
 - `⭐⭐⭐` **05** · Horloge numérique, avec la date en français
 - `⭐⭐⭐` **06** · Chronomètre : start, pause, reset et enregistrement des tours
-- `⭐⭐☆` **07** · Pierre-feuille-ciseaux contre l'ordi, avec score
+- `⭐⭐⭐` **07** · Pierre-feuille-ciseaux contre l'ordi, avec score
 - `☆☆☆` **08** · Devine le nombre : indices plus/moins, compteur d'essais, 3 difficultés
 - `☆☆☆` **09** · Calculatrice simple : 4 opérations, décimales, utilisable au clavier
 - `☆☆☆` **10** · 👹 **BOSS : Todo-list** (ajout, édition, suppression, filtres, sauvegarde en localStorage)
@@ -210,13 +218,14 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 | 61 à 80 | Senior |
 | 81 à 100 | Légende |
 
-**Total : 20 / 300 ⭐**
+**Total : 21 / 300 ⭐**
 
 ---
 
 ## 🔮 Pronostic de Claude
 
 - **14/11/2026, après le niveau 5** : niveau 75 environ, avec 220 à 250 ⭐ (revu à la hausse depuis 180 à 200 ⭐, grâce à la persévérance sur les ⭐ 3). Premier pic au niveau 25 (minimax), vrai mur au monde 7 (algorithmique), test décisif au monde 8 (architecture).
+- **15/11/2026, après le niveau 7** : pronostic maintenu, niveau 75 environ, avec 220 à 250 ⭐. Bon signe pour le monde 8 : les remarques de conception (règles sous forme de données, dépendances explicites, effets de bord) ont été assimilées en quelques allers-retours, et contestées avec de vrais arguments. Point de vigilance : la ⭐ 3 demande encore plusieurs passes. Jouer l'utilisateur pénible et relire le code avant l'envoi en ferait gagner.
 
 ---
 
@@ -225,7 +234,7 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 ```
 Je fais une progression gamifiée en JavaScript et tu es l'arbitre qui évalue mes niveaux.
 Repo : https://github.com/digital-skylines/claude-exercices
-Lis le README.md (règles et instructions pour toi) et le MEMENTO.md, puis évalue les niveaux NN à NN (le boss à part).
+Lis le README.md (règles et instructions pour toi), puis évalue les niveaux NN à NN (le boss à part).
 ```
 
 ## 💬 Prompt pour mettre à jour le README
