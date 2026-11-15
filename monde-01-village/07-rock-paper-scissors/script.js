@@ -1,9 +1,10 @@
+const btn = [
+    document.querySelector("#rock"),
+    document.querySelector("#paper"),
+    document.querySelector("#scissors"),
+]
+
 const el = {
-    // Buttons
-    rock: document.querySelector("#rock"),
-    paper: document.querySelector("#paper"),
-    scissors: document.querySelector("#scissors"),
-    
     // Screens
     duel: document.querySelector("#duel"),
     result: document.querySelector("#result"),
@@ -18,10 +19,14 @@ const score = {
     bot: 0
 }
 
+const translation = {
+    rock: "PIERRE",
+    paper: "PAPIER",
+    scissors: "CISEAUX"
+}
+
 // Ecoute d'événement
-el.rock.addEventListener("click", (event) => playGame(event))
-el.paper.addEventListener("click", (event) => playGame(event))
-el.scissors.addEventListener("click", (event) => playGame(event))
+btn.forEach(item => { item.addEventListener("click", event => playGame(event)) })
 
 function playGame(event) {
     
@@ -29,8 +34,6 @@ function playGame(event) {
     const botAction = getBotAction();
 
     const judgement = judge(humanAction, botAction);
-
-    console.log(judgement)
 
     displayJudgement(judgement);
 
@@ -42,16 +45,16 @@ function getHumanAction(event) {
 
 function getBotAction() {
     const choices = ["rock", "paper", "scissors"]
-    const index = Math.floor(Math.random() * 3)
+    const index = Math.floor(Math.random() * choices.length)
     return choices[index];
 }
 
 function judge(humanAction, botAction) {
 
-    const data = {
+    const arbitration = {
         message: "",
-        humanAction,
-        botAction,
+        humanAction: translation[humanAction],
+        botAction: translation[botAction],
     }
 
     // Case human win
@@ -61,7 +64,7 @@ function judge(humanAction, botAction) {
         (humanAction === "scissors" && botAction === "paper")
     ) {
         score.human++;
-        data.message = "VOUS AVEZ GAGNÉ"
+        arbitration.message = "VOUS AVEZ GAGNÉ"
     }
 
     // Case bot win
@@ -71,15 +74,15 @@ function judge(humanAction, botAction) {
         (botAction === "scissors" && humanAction === "paper")
     ) {
         score.bot++;
-        data.message = "VOUS AVEZ PERDU"
+        arbitration.message = "VOUS AVEZ PERDU"
     }
 
     // Case draw
     else {
-        data.message = "ÉGALITÉ";
+        arbitration.message = "ÉGALITÉ";
     }
 
-    return data;
+    return arbitration;
 }
 
 function displayJudgement(judgement) {
