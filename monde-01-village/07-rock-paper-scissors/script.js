@@ -1,4 +1,4 @@
-const btn = [
+const btns = [
     document.querySelector("#rock"),
     document.querySelector("#paper"),
     document.querySelector("#scissors"),
@@ -19,18 +19,27 @@ const score = {
     bot: 0
 }
 
-const translation = {
-    rock: "PIERRE",
-    paper: "PAPIER",
-    scissors: "CISEAUX"
-}
+const choices = [
+    {
+        fr: "pierre",
+        en: "rock"
+    },
+    {
+        fr: "papier",
+        en: "paper"
+    },
+    {
+        fr: "ciseaux",
+        en: "scissors"
+    }
+]
 
 // Ecoute d'événement
-btn.forEach(item => { item.addEventListener("click", event => playGame(event)) })
+btns.forEach(item => { item.addEventListener("click", event => playGame(event.target.dataset.action)) })
 
-function playGame(event) {
+function playGame(humanChoice) {
     
-    const humanAction = getHumanAction(event);
+    const humanAction = getHumanAction(humanChoice);
     const botAction = getBotAction();
 
     const judgement = judge(humanAction, botAction);
@@ -39,12 +48,11 @@ function playGame(event) {
 
 } 
 
-function getHumanAction(event) {
-    return event.target.dataset.action;
+function getHumanAction(humanChoice) {
+    return choices.find(choice => choice.en === humanChoice)
 }
 
 function getBotAction() {
-    const choices = ["rock", "paper", "scissors"]
     const index = Math.floor(Math.random() * choices.length)
     return choices[index];
 }
@@ -53,15 +61,15 @@ function judge(humanAction, botAction) {
 
     const arbitration = {
         message: "",
-        humanAction: translation[humanAction],
-        botAction: translation[botAction],
+        humanAction: humanAction.fr.toUpperCase(),
+        botAction: botAction.fr.toUpperCase(),
     }
 
     // Case human win
     if(
-        (humanAction === "rock" && botAction === "scissors") ||
-        (humanAction === "paper" && botAction === "rock") ||
-        (humanAction === "scissors" && botAction === "paper")
+        (humanAction.en === "rock" && botAction.en === "scissors") ||
+        (humanAction.en === "paper" && botAction.en === "rock") ||
+        (humanAction.en === "scissors" && botAction.en === "paper")
     ) {
         score.human++;
         arbitration.message = "VOUS AVEZ GAGNÉ"
@@ -69,9 +77,9 @@ function judge(humanAction, botAction) {
 
     // Case bot win
     else if(
-        (botAction === "rock" && humanAction === "scissors") ||
-        (botAction === "paper" && humanAction === "rock") ||
-        (botAction === "scissors" && humanAction === "paper")
+        (botAction.en === "rock" && humanAction.en === "scissors") ||
+        (botAction.en === "paper" && humanAction.en === "rock") ||
+        (botAction.en === "scissors" && humanAction.en === "paper")
     ) {
         score.bot++;
         arbitration.message = "VOUS AVEZ PERDU"
