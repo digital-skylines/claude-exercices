@@ -47,7 +47,7 @@ function playGame(humanAction) {
 
     const arbitration = judge(humanChoice, botChoice, score);
 
-    displayArbitration(arbitration);
+    displayArbitration(arbitration, score);
 
 } 
 
@@ -88,7 +88,7 @@ function judge(humanChoice, botChoice, score) {
     return arbitration;
 }
 
-function displayArbitration(arbitration) {
+function displayArbitration(arbitration, score) {
     // Changement du score
     el.humanScore.textContent = score.human;
     el.botScore.textContent = score.bot;
