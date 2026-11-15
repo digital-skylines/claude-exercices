@@ -2,7 +2,7 @@ const btns = [
     document.querySelector("#rock"),
     document.querySelector("#paper"),
     document.querySelector("#scissors"),
-]
+];
 
 const el = {
     // Screens
@@ -12,33 +12,30 @@ const el = {
     // Scores
     humanScore: document.querySelector("#score-human"),
     botScore: document.querySelector("#score-bot")
-}
+};
 
 const score = {
     human: 0,
     bot: 0
-}
+};
 
 const choices = [
     {
         key: "rock",
-        fr: "pierre",
-        en: "rock"
+        fr: "pierre"
     },
     {
         key: "paper",
-        fr: "papier",
-        en: "paper"
+        fr: "papier"
     },
     {
         key: "scissors",
-        fr: "ciseaux",
-        en: "scissors"
+        fr: "ciseaux"
     }
-]
+];
 
 // Ecoute d'événement
-btns.forEach(btn => { btn.addEventListener("click", event => playGame(event.target.dataset.action)) })
+btns.forEach(btn => { btn.addEventListener("click", event => playGame(event.target.dataset.action)); });
 
 function playGame(humanAction) {
     
@@ -47,7 +44,7 @@ function playGame(humanAction) {
 
     const arbitration = judge(humanChoice, botChoice);
 
-    displayJudgement(arbitration);
+    displayArbitration(arbitration);
 
 } 
 
@@ -66,7 +63,7 @@ function judge(humanChoice, botChoice) {
         message: "",
         humanChoice: humanChoice.fr.toUpperCase(),
         botChoice: botChoice.fr.toUpperCase(),
-    }
+    };
 
     // Case human win
     if(
@@ -96,7 +93,7 @@ function judge(humanChoice, botChoice) {
     return arbitration;
 }
 
-function displayJudgement(arbitration) {
+function displayArbitration(arbitration) {
     // Changement du score
     el.humanScore.textContent = score.human;
     el.botScore.textContent = score.bot;
