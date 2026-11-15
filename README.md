@@ -84,7 +84,7 @@ Légende : `☆☆☆` = pas encore fait · `⭐☆☆` = 1 étoile · `⭐⭐�
 - `⭐⭐⭐` **03** · Générateur de mot de passe : longueur, options (chiffres, symboles…) et bouton copier
 - `⭐⭐⭐` **04** · Lanceur de dés : nombre de dés et de faces au choix, total affiché
 - `⭐⭐⭐` **05** · Horloge numérique, avec la date en français
-- `☆☆☆` **06** · Chronomètre : start, pause, reset et enregistrement des tours
+- `⭐⭐☆` **06** · Chronomètre : start, pause, reset et enregistrement des tours
 - `☆☆☆` **07** · Pierre-feuille-ciseaux contre l'ordi, avec score
 - `☆☆☆` **08** · Devine le nombre : indices plus/moins, compteur d'essais, 3 difficultés
 - `☆☆☆` **09** · Calculatrice simple : 4 opérations, décimales, utilisable au clavier

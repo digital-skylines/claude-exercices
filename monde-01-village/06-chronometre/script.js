@@ -7,36 +7,36 @@ const toursList = document.querySelector("#tours-list")
 const screen = document.querySelector("#screen");
 
 let pause = false;
-let cs = 0;
+let ms = 0;
 let lastTime = 0;
 
 function displayChrono() {
     
-    const chrono = getChrono(cs)
+    const chrono = getChrono(ms)
 
     screen.textContent = chrono
 }
 
-function getChrono(cs) {
-    const mm = (Math.floor(cs / 6000)).toString().padStart(2, "0");
-    const ss = (Math.floor(cs / 100) % 60).toString().padStart(2, "0");
-    const cc = (Math.floor(cs) % 100).toString().padStart(2, "0")
+function getChrono(ms) {
+    const mm = Math.floor(ms / 60000).toString().padStart(2, "0");
+    const ss = (Math.floor(ms / 1000) % 60).toString().padStart(2, "0");
+    const cc = (Math.floor(ms / 10) % 100).toString().padStart(2, "0");
 
     return `${mm}:${ss}.${cc}`
 }
 
-function startChrono() {
+function playChrono() {
     if(pause) { return; }
-    cs++;
+    ms++;
     displayChrono();
-    setTimeout(startChrono, 10);
+    setTimeout(playChrono, 1);
 }
 
 displayChrono()
 
 startButton.addEventListener("click", () => {
     pause = false;
-    startChrono();
+    playChrono();
 })
 
 pauseButton.addEventListener("click", () => {
@@ -45,7 +45,7 @@ pauseButton.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
     pause = true;
-    cs = 0;
+    ms = 0;
     lastTime = 0;
     displayChrono();
     toursList.innerHTML = "";
@@ -58,10 +58,10 @@ toursButton.addEventListener("click", () => {
     const index = toursPoint.length + 1;
 
     // tour
-    const tour = getChrono(cs - lastTime)
+    const tour = getChrono(ms - lastTime)
 
     // total
-    const total = getChrono(cs)
+    const total = getChrono(ms)
 
     // Création élément
     const li = document.createElement("li");
@@ -69,5 +69,5 @@ toursButton.addEventListener("click", () => {
     
     // Affichage
     toursList.appendChild(li);
-    lastTime = cs;
+    lastTime = ms;
 })
