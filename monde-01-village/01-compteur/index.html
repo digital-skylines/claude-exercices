@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compteur</title>
-    <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="../../common.css">
 </head>
 <body>
-    <div class="board">
-        <span id="counter">0</span>
-        <button id="plus">+</button>
-        <button id="minus">-</button>
-        <button id="reset">reset</button>
-    </div>
+    <main class="flex flex-column gap-2">
+        
+        <div class="screen flex flex-column flex-justify-center" id="counter">
+            0
+        </div>
+
+        <div class="grid grid-3 gap-2">
+            <button id="plus">+</button>
+            <button id="minus">-</button>
+            <button id="reset">reset</button>
+        </div>
+    </main>
 </body>
 </html>

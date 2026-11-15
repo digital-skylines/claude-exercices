@@ -37,6 +37,7 @@ function playChrono() {
 
 displayChrono()
 
+
 startButton.addEventListener("click", () => {
     if(!isPlaying) {
         startTime = 0;
